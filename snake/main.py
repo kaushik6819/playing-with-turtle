@@ -9,11 +9,19 @@ screen.bgcolor("black")
 screen.tracer(0)
 
 anish = Snake()
-anish.make_snake()
+screen.listen()
+screen.onkey(anish.Up,"Up")
+screen.onkey(anish.Down,"Down")
+screen.onkey(anish.Left,"Left")
+screen.onkey(anish.Right,"Right")
+
 
 flag = True
 while flag:
-    anish
+    screen.update()
+    time.sleep(0.2)
+    anish.move()
+
 
     
 screen.exitonclick()
