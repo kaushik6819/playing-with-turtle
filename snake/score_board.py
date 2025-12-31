@@ -11,14 +11,13 @@ class Score(Turtle):
         self.hideturtle()
         self.penup()
         self.goto(0,280)
-        self.update()
     
     def update(self):
         self.write(f"SCORE :{self.count}",True,font=FONT, align="center")
     
     def game_over(self):
         self.home()
-        self.write(f"GAME OVER",True,font=FONT, align="center")
+        self.write(f"High Score is :70 \nTerse sai nahi hoga chorde",True,font=FONT, align="center")
     
 
     def count_score(self):
