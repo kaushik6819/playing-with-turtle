@@ -10,31 +10,38 @@ screen.title("My snake game")
 screen.bgcolor("black")
 screen.tracer(0)
 
-anish = Snake()
+snake = Snake()
 poison = Food()
 score = Score()
 
 screen.listen()
-screen.onkey(anish.Up,"Up")
-screen.onkey(anish.Down,"Down")
-screen.onkey(anish.Left,"Left")
-screen.onkey(anish.Right,"Right")
+screen.onkey(snake.Up,"Up")
+screen.onkey(snake.Down,"Down")
+screen.onkey(snake.Left,"Left")
+screen.onkey(snake.Right,"Right")
 
 
 flag = True
 while flag:
     screen.update()
+    
     time.sleep(0.2)
-    anish.move()
+    snake.move()
 
     #collision detection 
-    if anish.head.distance(poison) < 15:
+    if snake.head.distance(poison) < 15:
 
         poison.refresh()
+        snake.extend()
         score.count_score()
-    if (anish.head.xcor() > 300 or anish.head.xcor() < -300 or anish.head.ycor() > 300 or anish.head.ycor()< -300):
+    if (snake.head.xcor() > 300 or snake.head.xcor() < -300 or snake.head.ycor() > 300 or snake.head.ycor()< -300):
         score.game_over()
         flag = False
+
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            flag = False
+            score.game_over()
     
 
 
